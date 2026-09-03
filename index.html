@@ -20,7 +20,6 @@
       min-height: 100vh;
       background: rgba(0, 0, 0, 0.65);
       padding: 20px;
-      box-sizing: border-box;
     }
 
     header {
@@ -45,6 +44,30 @@
       margin-bottom: 20px;
     }
 
+    .search-box {
+      max-width: 700px;
+      margin: 0 auto 25px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .search-box button {
+      padding: 14px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
     .news {
       max-width: 800px;
       margin: auto;
@@ -55,11 +78,6 @@
       padding: 20px;
       border-radius: 15px;
       margin-bottom: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .card h2 {
-      margin-top: 0;
     }
 
     .card img {
@@ -70,55 +88,98 @@
       border-radius: 12px;
     }
 
+    #noResults {
+      display: none;
+      text-align: center;
+      font-size: 18px;
+      padding: 20px;
+    }
+
     footer {
       text-align: center;
       margin-top: 30px;
       padding: 15px;
-      opacity: 0.8;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="overlay">
+<div class="overlay">
 
-    <header>
-      <h1>🇷🇷 أخبار المملكة الردادية</h1>
-      <p>منصة الأخبار الرسمية</p>
-    </header>
+  <header>
+    <h1>🇷🇷 أخبار المملكة الردادية</h1>
+    <p>منصة الأخبار الرسمية</p>
+  </header>
 
-    <div class="breaking">
-      🚨 عاجل | آخر الأخبار والتطورات
-    </div>
-
-    <main class="news">
-
-      <article class="card">
-        <h2>🚨 إطلاق منصة أخبار المملكة الردادية</h2>
-        <p>
-          🚨 عاجل: اليوم تم إطلاق منصة أخبار المملكة الردادية رسميًا،
-          ونرحب بجميع المتابعين والزوار.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>🏆 إنجاز تقني</h2>
-        <p>
-          يواصل الملازم أنس فلاح المران إبداعه في المجال التقني،
-          بعد نجاحه في إنشاء وتطوير منصة أخبار المملكة الردادية بنفسه. 👏🔥
-        </p>
-
-        <img src="Screenshot_٢٠٢٦٠٩٠٣-٢٢٣١٥٠.jpg" alt="صورة التكريم">
-      </article>
-
-    </main>
-
-    <footer>
-      🇷🇷 أخبار المملكة الردادية — جميع الحقوق محفوظة
-    </footer>
-
+  <div class="breaking">
+    🚨 عاجل | آخر الأخبار والتطورات
   </div>
+
+  <div class="search-box">
+    <input id="searchInput" type="text" placeholder="🔎 ابحث عن خبر...">
+    <button onclick="searchNews()">بحث</button>
+  </div>
+
+  <main class="news">
+
+    <article class="card">
+      <h2>🚨 إطلاق منصة أخبار المملكة الردادية</h2>
+      <p>
+        اليوم تم إطلاق منصة أخبار المملكة الردادية رسميًا،
+        ونرحب بجميع المتابعين والزوار.
+      </p>
+    </article>
+
+    <article class="card">
+      <h2>🏆 إنجاز تقني</h2>
+      <p>
+        يواصل الملازم أنس فلاح المران إبداعه في المجال التقني،
+        بعد نجاحه في إنشاء وتطوير منصة أخبار المملكة الردادية بنفسه. 👏🔥
+      </p>
+
+      <img src="Screenshot_٢٠٢٦٠٩٠٣-٢٢٣١٥٠.jpg" alt="صورة التكريم">
+    </article>
+
+  </main>
+
+  <div id="noResults">
+    ❌ لم يتم العثور على خبر مطابق.
+  </div>
+
+  <footer>
+    🇷🇷 أخبار المملكة الردادية
+  </footer>
+
+</div>
+
+<script>
+function searchNews() {
+  const search = document.getElementById("searchInput").value.trim().toLowerCase();
+  const cards = document.querySelectorAll(".card");
+  let found = false;
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+
+    if (search === "" || text.includes(search)) {
+      card.style.display = "block";
+      found = true;
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+  document.getElementById("noResults").style.display =
+    found ? "none" : "block";
+}
+
+document.getElementById("searchInput").addEventListener("keyup", function(event) {
+  if (event.key === "Enter") {
+    searchNews();
+  }
+});
+</script>
 
 </body>
 </html>
