@@ -1,4 +1,101 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أخبار المملكة الردادية</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("Screenshot_٢٠٢٦٠٩٠٣-٢٢٣١٥٠.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+    }
+
+    .overlay {
+      min-height: 100vh;
+      background: rgba(0, 0, 0, 0.65);
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    /* الأزرار الأربعة */
+    .menu {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .menu button {
+      padding: 11px 16px;
+      border: none;
+      border-radius: 10px;
+      background: white;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .menu button:hover {
+      transform: scale(1.05);
+    }
+
+    .breaking {
+      background: #b00000;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .search-box {
+      max-width: 700px;
+      margin: 0 auto 25px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .search-box button {
+      padding: 14px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .news {
+      max-width: 800px;
+      margin: auto;
     }
 
     .card {
@@ -36,37 +133,81 @@
 <div class="overlay">
 
   <header>
+
+    <!-- الأزرار الأربعة -->
+    <div class="menu">
+
+      <button onclick="showSection('all')">
+        🏠 الرئيسية
+      </button>
+
+      <button onclick="showSection('urgent')">
+        🚨 عاجل
+      </button>
+
+      <button onclick="showSection('kingdom')">
+        🇷🇷 أخبار المملكة
+      </button>
+
+      <button onclick="showSection('tech')">
+        💻 تقنية
+      </button>
+
+    </div>
+
     <h1>🇷🇷 أخبار المملكة الردادية</h1>
     <p>منصة الأخبار الرسمية</p>
+
   </header>
 
   <div class="breaking">
     🚨 عاجل | آخر الأخبار والتطورات
   </div>
 
+  <!-- البحث -->
   <div class="search-box">
-    <input id="searchInput" type="text" placeholder="🔎 ابحث عن خبر...">
-    <button onclick="searchNews()">بحث</button>
+
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="🔎 ابحث عن خبر..."
+    >
+
+    <button onclick="searchNews()">
+      بحث
+    </button>
+
   </div>
 
   <main class="news">
 
-    <article class="card">
+    <!-- خبر عاجل -->
+    <article class="card urgent kingdom">
+
       <h2>🚨 إطلاق منصة أخبار المملكة الردادية</h2>
+
       <p>
         اليوم تم إطلاق منصة أخبار المملكة الردادية رسميًا،
         ونرحب بجميع المتابعين والزوار.
       </p>
+
     </article>
 
-    <article class="card">
+    <!-- خبر تقني -->
+    <article class="card tech">
+
       <h2>🏆 إنجاز تقني</h2>
+
       <p>
         يواصل الملازم أنس فلاح المران إبداعه في المجال التقني،
         بعد نجاحه في إنشاء وتطوير منصة أخبار المملكة الردادية بنفسه. 👏🔥
       </p>
 
-      <img src="Screenshot_٢٠٢٦٠٩٠٣-٢٢٣١٥٠.jpg" alt="صورة التكريم">
+      <img
+        src="Screenshot_٢٠٢٦٠٩٠٣-٢٢٣١٥٠.jpg"
+        alt="صورة التكريم"
+      >
+
     </article>
 
   </main>
@@ -82,31 +223,103 @@
 </div>
 
 <script>
+
 function searchNews() {
-  const search = document.getElementById("searchInput").value.trim().toLowerCase();
-  const cards = document.querySelectorAll(".card");
+
+  const search =
+    document
+      .getElementById("searchInput")
+      .value
+      .trim()
+      .toLowerCase();
+
+  const cards =
+    document.querySelectorAll(".card");
+
   let found = false;
 
   cards.forEach(card => {
-    const text = card.innerText.toLowerCase();
+
+    const text =
+      card.innerText.toLowerCase();
 
     if (search === "" || text.includes(search)) {
+
       card.style.display = "block";
       found = true;
+
     } else {
+
       card.style.display = "none";
+
     }
+
   });
 
   document.getElementById("noResults").style.display =
-    found ? "none" : "block"
+    found ? "none" : "block";
 }
 
-document.getElementById("searchInput").addEventListener("keyup", function(event) {
-  if (event.key === "Enter") {
-    searchNews();
-  }
-});
+
+function showSection(section) {
+
+  const cards =
+    document.querySelectorAll(".card");
+
+  document.getElementById("searchInput").value = "";
+
+  document.getElementById("noResults").style.display = "none";
+
+  cards.forEach(card => {
+
+    if (section === "all") {
+
+      card.style.display = "block";
+
+    }
+
+    else if (section === "urgent") {
+
+      card.style.display =
+        card.classList.contains("urgent")
+        ? "block"
+        : "none";
+
+    }
+
+    else if (section === "kingdom") {
+
+      card.style.display =
+        card.classList.contains("kingdom")
+        ? "block"
+        : "none";
+
+    }
+
+    else if (section === "tech") {
+
+      card.style.display =
+        card.classList.contains("tech")
+        ? "block"
+        : "none";
+
+    }
+
+  });
+
+}
+
+
+document
+  .getElementById("searchInput")
+  .addEventListener("keyup", function(event) {
+
+    if (event.key === "Enter") {
+      searchNews();
+    }
+
+  });
+
 </script>
 
 </body>
