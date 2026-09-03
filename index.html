@@ -1,76 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>أخبار المملكة الردادية</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-image: url("Screenshot_٢٠٢٦٠٩٠٣-٢٢٣١٥٠.jpg");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: white;
-    }
-
-    .overlay {
-      min-height: 100vh;
-      background: rgba(0, 0, 0, 0.65);
-      padding: 20px;
-    }
-
-    header {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 15px;
-      margin-bottom: 20px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-    }
-
-    .breaking {
-      background: #b00000;
-      padding: 12px;
-      border-radius: 10px;
-      text-align: center;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .search-box {
-      max-width: 700px;
-      margin: 0 auto 25px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .search-box input {
-      flex: 1;
-      padding: 14px;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-    }
-
-    .search-box button {
-      padding: 14px 20px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    .news {
-      max-width: 800px;
-      margin: auto;
     }
 
     .card {
@@ -171,7 +99,7 @@ function searchNews() {
   });
 
   document.getElementById("noResults").style.display =
-    found ? "none" : "block";
+    found ? "none" : "block"
 }
 
 document.getElementById("searchInput").addEventListener("keyup", function(event) {
