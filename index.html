@@ -1,19 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>أخبار المملكة الردادية</title>
 
   <style>
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+
       background-image: url("Screenshot_٢٠٢٦٠٩٠٣-٢٢٣١٥٠.jpg");
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
+
       color: white;
     }
 
@@ -26,33 +30,40 @@
     header {
       text-align: center;
       padding: 20px;
+
       background: rgba(0, 0, 0, 0.6);
+
       border-radius: 15px;
       margin-bottom: 20px;
     }
 
     header h1 {
-      margin: 0;
+      margin: 15px 0 5px;
       font-size: 28px;
     }
 
     /* الأزرار الأربعة */
+
     .menu {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .menu button {
       padding: 11px 16px;
+
       border: none;
       border-radius: 10px;
+
       background: white;
       color: black;
+
       font-size: 15px;
       font-weight: bold;
+
       cursor: pointer;
     }
 
@@ -62,71 +73,113 @@
 
     .breaking {
       background: #b00000;
+
       padding: 12px;
+
       border-radius: 10px;
+
       text-align: center;
+
       font-weight: bold;
+
       margin-bottom: 20px;
     }
 
+    /* البحث */
+
     .search-box {
       max-width: 700px;
+
       margin: 0 auto 25px;
+
       display: flex;
+
       gap: 10px;
     }
 
     .search-box input {
       flex: 1;
+
       padding: 14px;
+
       border: none;
+
       border-radius: 10px;
+
       font-size: 16px;
+
+      outline: none;
     }
 
     .search-box button {
       padding: 14px 20px;
+
       border: none;
+
       border-radius: 10px;
+
       cursor: pointer;
+
       font-size: 16px;
+
       font-weight: bold;
     }
 
+    /* الأخبار */
+
     .news {
       max-width: 800px;
+
       margin: auto;
     }
 
     .card {
       background: rgba(255, 255, 255, 0.12);
+
       padding: 20px;
+
       border-radius: 15px;
+
       margin-bottom: 20px;
     }
 
     .card img {
       width: 100%;
+
       max-width: 600px;
+
       display: block;
+
       margin: 15px auto;
+
       border-radius: 12px;
     }
 
     #noResults {
       display: none;
+
       text-align: center;
+
       font-size: 18px;
+
       padding: 20px;
+
+      color: red;
+
+      font-weight: bold;
     }
 
     footer {
       text-align: center;
+
       margin-top: 30px;
+
       padding: 15px;
     }
+
   </style>
 </head>
+
 
 <body>
 
@@ -135,6 +188,7 @@
   <header>
 
     <!-- الأزرار الأربعة -->
+
     <div class="menu">
 
       <button onclick="showSection('all')">
@@ -155,16 +209,24 @@
 
     </div>
 
-    <h1>🇷🇷 أخبار المملكة الردادية</h1>
-    <p>منصة الأخبار الرسمية</p>
+    <h1>
+      🇷🇷 أخبار المملكة الردادية
+    </h1>
+
+    <p>
+      منصة الأخبار الرسمية
+    </p>
 
   </header>
+
 
   <div class="breaking">
     🚨 عاجل | آخر الأخبار والتطورات
   </div>
 
-  <!-- البحث -->
+
+  <!-- خانة البحث -->
+
   <div class="search-box">
 
     <input
@@ -179,12 +241,17 @@
 
   </div>
 
+
   <main class="news">
 
-    <!-- خبر عاجل -->
+
+    <!-- الخبر الأول -->
+
     <article class="card urgent kingdom">
 
-      <h2>🚨 إطلاق منصة أخبار المملكة الردادية</h2>
+      <h2>
+        🚨 إطلاق منصة أخبار المملكة الردادية
+      </h2>
 
       <p>
         اليوم تم إطلاق منصة أخبار المملكة الردادية رسميًا،
@@ -193,10 +260,14 @@
 
     </article>
 
-    <!-- خبر تقني -->
+
+    <!-- خبر الإنجاز -->
+
     <article class="card tech">
 
-      <h2>🏆 إنجاز تقني</h2>
+      <h2>
+        🏆 إنجاز تقني
+      </h2>
 
       <p>
         يواصل الملازم أنس فلاح المران إبداعه في المجال التقني،
@@ -210,11 +281,31 @@
 
     </article>
 
+
+    <!-- خبر أحمد العامري -->
+
+    <article class="card kingdom">
+
+      <h2>
+        🇷🇷 لقاء الرئيس أبو رداد مع أحمد العامري
+      </h2>
+
+      <p>
+        في لقاء رسمي، اجتمع الرئيس أبو رداد مع أحمد العامري،
+        حيث ناقشا عددًا من الملفات والتطورات المهمة
+        في المملكة الردادية.
+      </p>
+
+    </article>
+
+
   </main>
+
 
   <div id="noResults">
     ❌ لم يتم العثور على خبر مطابق.
   </div>
+
 
   <footer>
     🇷🇷 أخبار المملكة الردادية
@@ -222,7 +313,10 @@
 
 </div>
 
+
 <script>
+
+/* البحث */
 
 function searchNews() {
 
@@ -238,14 +332,20 @@ function searchNews() {
 
   let found = false;
 
+
   cards.forEach(card => {
 
     const text =
       card.innerText.toLowerCase();
 
-    if (search === "" || text.includes(search)) {
+
+    if (
+      search === "" ||
+      text.includes(search)
+    ) {
 
       card.style.display = "block";
+
       found = true;
 
     } else {
@@ -256,19 +356,25 @@ function searchNews() {
 
   });
 
+
   document.getElementById("noResults").style.display =
     found ? "none" : "block";
+
 }
 
+
+/* الأزرار الأربعة */
 
 function showSection(section) {
 
   const cards =
     document.querySelectorAll(".card");
 
+
   document.getElementById("searchInput").value = "";
 
   document.getElementById("noResults").style.display = "none";
+
 
   cards.forEach(card => {
 
@@ -310,28 +416,22 @@ function showSection(section) {
 }
 
 
+/* البحث عند الضغط على Enter */
+
 document
   .getElementById("searchInput")
   .addEventListener("keyup", function(event) {
 
     if (event.key === "Enter") {
+
       searchNews();
+
     }
 
   });
 
 </script>
-</script>
 
-<article class="card">
-  <h2>🇷🇷 لقاء الرئيس أبو رداد مع أحمد العامري</h2>
-  <p>
-    في لقاء رسمي، اجتمع الرئيس أبو رداد مع أحمد العامري،
-    حيث ناقشا عددًا من الملفات والتطورات المهمة في المملكة الردادية.
-  </p>
-</article>
 
-</body>
-</html>
 </body>
 </html>
