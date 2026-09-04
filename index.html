@@ -431,6 +431,42 @@ document
   });
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/appwrite@17.0.0"></script>
 
+<script>
+const client = new Appwrite.Client()
+  .setEndpoint("https://fra.cloud.appwrite.io/v1")
+  .setProject("6a9a6fb500332cbf4acc");
+
+const tablesDB = new Appwrite.TablesDB(client);
+
+async function loadNews() {
+  try {
+    const result = await tablesDB.listRows(
+      "6a9a727b003bbb894fba",
+      "6a9a72ac003e439e97b7"
+    );
+
+    const newsBox = document.querySelector(".news");
+
+    result.rows.forEach(row => {
+      const article = document.createElement("article");
+      article.className = "card";
+
+      article.innerHTML = `
+        <h2>📰 ${row.title}</h2>
+        <p>${row.content}</p>
+      `;
+
+      newsBox.prepend(article);
+    });
+
+  } catch (error) {
+    console.log("خطأ في جلب الأخبار:", error);
+  }
+}
+
+loadNews();
+</script>
 </body>
 </html>
