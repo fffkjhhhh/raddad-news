@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
@@ -7,18 +7,18 @@
 
   <title>أخبار المملكة الردادية</title>
 
-  <style>
+  <link rel="stylesheet" href="style.css">
 
+  <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-
       background-image: url("Screenshot_٢٠٢٦٠٩٠٣-٢٢٣١٥٠.jpg");
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-
       color: white;
+      transition: 0.3s;
     }
 
     .overlay {
@@ -30,9 +30,7 @@
     header {
       text-align: center;
       padding: 20px;
-
       background: rgba(0, 0, 0, 0.6);
-
       border-radius: 15px;
       margin-bottom: 20px;
     }
@@ -42,8 +40,6 @@
       font-size: 28px;
     }
 
-    /* الأزرار الأربعة */
-
     .menu {
       display: flex;
       justify-content: center;
@@ -52,142 +48,140 @@
       margin-bottom: 15px;
     }
 
-    .menu button {
+    .menu button,
+    .mode-button {
       padding: 11px 16px;
-
       border: none;
       border-radius: 10px;
-
       background: white;
       color: black;
-
       font-size: 15px;
       font-weight: bold;
-
       cursor: pointer;
     }
 
-    .menu button:hover {
+    .menu button:hover,
+    .mode-button:hover {
       transform: scale(1.05);
     }
 
-    .breaking {
-      background: #b00000;
-
-      padding: 12px;
-
-      border-radius: 10px;
-
-      text-align: center;
-
-      font-weight: bold;
-
-      margin-bottom: 20px;
+    .mode-button {
+      margin-top: 10px;
     }
 
-    /* البحث */
+    /* شريط الأخبار المتحرك */
+
+    .ticker {
+      background: #b00000;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      white-space: nowrap;
+      font-weight: bold;
+    }
+
+    .ticker-text {
+      display: inline-block;
+      animation: moveNews 18s linear infinite;
+    }
+
+    @keyframes moveNews {
+      from {
+        transform: translateX(100%);
+      }
+
+      to {
+        transform: translateX(-100%);
+      }
+    }
 
     .search-box {
       max-width: 700px;
-
       margin: 0 auto 25px;
-
       display: flex;
-
       gap: 10px;
     }
 
     .search-box input {
       flex: 1;
-
       padding: 14px;
-
       border: none;
-
       border-radius: 10px;
-
       font-size: 16px;
-
       outline: none;
     }
 
     .search-box button {
       padding: 14px 20px;
-
       border: none;
-
       border-radius: 10px;
-
       cursor: pointer;
-
       font-size: 16px;
-
       font-weight: bold;
     }
 
-    /* الأخبار */
-
     .news {
       max-width: 800px;
-
       margin: auto;
     }
 
     .card {
       background: rgba(255, 255, 255, 0.12);
-
       padding: 20px;
-
       border-radius: 15px;
-
       margin-bottom: 20px;
     }
 
     .card img {
       width: 100%;
-
       max-width: 600px;
-
       display: block;
-
       margin: 15px auto;
-
       border-radius: 12px;
     }
 
     #noResults {
       display: none;
-
       text-align: center;
-
       font-size: 18px;
-
       padding: 20px;
-
       color: red;
-
       font-weight: bold;
     }
 
     footer {
       text-align: center;
-
       margin-top: 30px;
-
       padding: 15px;
     }
 
+    /* الوضع الليلي */
+
+    body.dark-mode {
+      background-image: none;
+      background-color: #111;
+    }
+
+    body.dark-mode .overlay {
+      background: rgba(0, 0, 0, 0.85);
+    }
+
+    body.dark-mode header {
+      background: rgba(30, 30, 30, 0.95);
+    }
+
+    body.dark-mode .card {
+      background: rgba(255, 255, 255, 0.08);
+    }
   </style>
 </head>
-
 
 <body>
 
 <div class="overlay">
 
   <header>
-
-    <!-- الأزرار الأربعة -->
 
     <div class="menu">
 
@@ -209,23 +203,31 @@
 
     </div>
 
-    <h1>
-      🇷🇷 أخبار المملكة الردادية
-    </h1>
+    <h1>🇷🇷 أخبار المملكة الردادية</h1>
 
-    <p>
-      منصة الأخبار الرسمية
-    </p>
+    <p>منصة الأخبار الرسمية</p>
+
+    <button class="mode-button" onclick="toggleMode()">
+      🌙 الوضع الليلي
+    </button>
 
   </header>
 
+  <!-- شريط الأخبار -->
 
-  <div class="breaking">
-    🚨 عاجل | آخر الأخبار والتطورات
+  <div class="ticker">
+
+    <div class="ticker-text">
+      🚨 عاجل | لقاء الرئيس أبو رداد مع أحمد العامري
+      &nbsp;&nbsp;&nbsp;
+      🏆 إنجاز تقني
+      &nbsp;&nbsp;&nbsp;
+      🇷🇷 أخبار المملكة الردادية
+    </div>
+
   </div>
 
-
-  <!-- خانة البحث -->
+  <!-- البحث -->
 
   <div class="search-box">
 
@@ -241,9 +243,7 @@
 
   </div>
 
-
   <main class="news">
-
 
     <!-- الخبر الأول -->
 
@@ -260,8 +260,7 @@
 
     </article>
 
-
-    <!-- خبر الإنجاز -->
+    <!-- الإنجاز -->
 
     <article class="card tech">
 
@@ -281,8 +280,7 @@
 
     </article>
 
-
-    <!-- خبر أحمد العامري -->
+    <!-- أحمد العامري -->
 
     <article class="card kingdom">
 
@@ -298,14 +296,11 @@
 
     </article>
 
-
   </main>
-
 
   <div id="noResults">
     ❌ لم يتم العثور على خبر مطابق.
   </div>
-
 
   <footer>
     🇷🇷 أخبار المملكة الردادية
@@ -313,10 +308,7 @@
 
 </div>
 
-
 <script>
-
-/* البحث */
 
 function searchNews() {
 
@@ -332,20 +324,14 @@ function searchNews() {
 
   let found = false;
 
-
   cards.forEach(card => {
 
     const text =
       card.innerText.toLowerCase();
 
-
-    if (
-      search === "" ||
-      text.includes(search)
-    ) {
+    if (search === "" || text.includes(search)) {
 
       card.style.display = "block";
-
       found = true;
 
     } else {
@@ -356,25 +342,19 @@ function searchNews() {
 
   });
 
-
   document.getElementById("noResults").style.display =
     found ? "none" : "block";
-
 }
 
-
-/* الأزرار الأربعة */
 
 function showSection(section) {
 
   const cards =
     document.querySelectorAll(".card");
 
-
   document.getElementById("searchInput").value = "";
 
   document.getElementById("noResults").style.display = "none";
-
 
   cards.forEach(card => {
 
@@ -416,22 +396,41 @@ function showSection(section) {
 }
 
 
-/* البحث عند الضغط على Enter */
+/* الوضع الليلي والنهاري */
+
+function toggleMode() {
+
+  document.body.classList.toggle("dark-mode");
+
+  const button =
+    document.querySelector(".mode-button");
+
+  if (document.body.classList.contains("dark-mode")) {
+
+    button.innerText = "☀️ الوضع النهاري";
+
+  } else {
+
+    button.innerText = "🌙 الوضع الليلي";
+
+  }
+
+}
+
+
+/* زر Enter للبحث */
 
 document
   .getElementById("searchInput")
   .addEventListener("keyup", function(event) {
 
     if (event.key === "Enter") {
-
       searchNews();
-
     }
 
   });
 
 </script>
 
-
 </body>
-</html><
+</html>
